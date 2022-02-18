@@ -1,0 +1,29 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #7e909a;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Start Login Area CSS*/
+.login_area {
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 50%;
+}
+.login_area input {
+    margin-bottom: 10px;
+}
+
+.login_area a {
+    background-color: #1c4e80;
+    border: 0px;
+    color: white;
+    border: 1px solid #1c4e80;
+}
+.login_area a:hover {
+    background-color: white;
+    color: #1c4e80;
+}
+/*End Login Area CSS*/
