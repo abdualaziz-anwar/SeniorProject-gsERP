@@ -29,10 +29,10 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Password" required>
                             </div>
-                            {{-- Later on --}}
+                            {{-- todo --}}
                             <a href="/" class="form-control btn my-4">LOGIN</a>
                         </form>
-                        {{-- Later on --}}
+                        {{-- todo --}}
                         <p class="text-danger" hidden>Error message will be shown here</p>
                     </section>
                 </div>

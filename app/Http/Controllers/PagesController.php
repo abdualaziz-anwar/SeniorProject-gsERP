@@ -10,4 +10,11 @@ class PagesController extends Controller
     public function login(){
         return view('pages.login');
     }
+
+    // Controllers for admin.
+
+    // PropertyManagment.
+    public function propertyManagment(){
+        return view('pages.propertyManagment');
+    }
 }

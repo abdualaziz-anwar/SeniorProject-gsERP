@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/' , 'PagesController@login');
+
+// Admin Pages.
+
+Route::get('/propertyManagment' , 'PagesController@propertyManagment');
