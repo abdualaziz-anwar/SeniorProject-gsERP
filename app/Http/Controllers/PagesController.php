@@ -17,4 +17,8 @@ class PagesController extends Controller
     public function propertyManagment(){
         return view('pages.propertyManagment');
     }
+
+    public function gasStationManagment(){
+        return view('pages.gasStationManagment');
+    }
 }
