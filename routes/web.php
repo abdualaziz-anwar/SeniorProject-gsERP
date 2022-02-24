@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/' , 'PagesController@login');
+// Admin dashBoard
+Route::get('/' , function(){
+    return redirect('/dashboard');
+});
+Route::get('/dashboard' , [\App\Http\Controllers\AdminController::class , 'dashboard']) ->name('dashboard');
 
-// Admin Pages.
+
 
 Route::get('/propertyManagment' , 'PagesController@propertyManagment');
 
