@@ -67,9 +67,9 @@
                 </nav>
                 {{-- ##login&logout options --}}
 
-                {{-- loading logo popUp --}}
+                {{-- loading  popUp --}}
                 <span id="dashboard_loader" style="display: none;">
-                    <img src="{{asset('images/loader-3.gif')}}" />
+                    <img src="{{asset('images/loader-3.gif')}}"/>
                 </span>
 
                 {{-- pageContent --}}

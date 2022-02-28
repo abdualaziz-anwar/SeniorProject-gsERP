@@ -19,12 +19,12 @@ Route::get('/' , function(){
 });
 Route::get('/dashboard' , [\App\Http\Controllers\AdminController::class , 'dashboard']) ->name('dashboard');
 
-// Propert managment Routing
+// Property managment Routing
 Route::get('/property-managment' , [\App\Http\Controllers\PropertyManagmentController::class, 'getListing']) -> name('property-managment');
-
+Route::post('/submitAddPropertForm' ,  [\App\Http\Controllers\PropertyManagmentController::class, 'submitAddPropertForm']) -> name('submitAddPropertForm');
 
 
 // ##Propert managment Routing
-Route::get('/propertyManagment' , 'PagesController@propertyManagment');
+// Route::get('/propertyManagment' , 'PagesController@propertyManagment');
 
-Route::get('/gasStationManagment' , 'PagesController@gasStationManagment');
+// Route::get('/gasStationManagment' , 'PagesController@gasStationManagment');
