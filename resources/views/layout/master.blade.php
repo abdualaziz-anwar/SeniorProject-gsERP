@@ -2,9 +2,10 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <link rel="stylesheet" href="{{asset('css/style.css')}}" />
@@ -14,11 +15,11 @@
 
     <body>
         <div class="d-flex" id="wrapper">
-
             {{-- sidebar Options on the left --}}
             <div class="Sidebar" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
                     <img src="{{asset('images/whitelogo.png')}}" alt="" class="img-fluid" width="80px"></i>PMS
+
                 </div>
                 <div class="list-group list-group-flush my-3">
                     {{-- TDOD LATER FOR PAGES --}}
@@ -34,7 +35,7 @@
 
             {{-- Page Content --}}
             <div id="page-content-wrapper">
-                {{-- burger sign on the left --}}
+                {{-- burger sign on the left {menu-toggle} --}}
                 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
@@ -67,9 +68,9 @@
                 </nav>
                 {{-- ##login&logout options --}}
 
-                {{-- loading  popUp --}}
+                {{-- loading popUp --}}
                 <span id="dashboard_loader" style="display: none;">
-                    <img src="{{asset('images/loader-3.gif')}}"/>
+                    <img src="{{asset('images/loader-3.gif')}}" />
                 </span>
 
                 {{-- pageContent --}}

@@ -58,8 +58,7 @@
                     {{-- modal footer --}}
                     {{-- TODO ONCLICK--}}
                     <div class="modal-footer">
-                        <button onclick="#"
-                            class="btn btn-success form-control border-0"
+                        <button onclick="#" class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Submit</button>
 
                         <button type="button" class="btn btn-danger form-control border-0" data-bs-dismiss="modal">Close

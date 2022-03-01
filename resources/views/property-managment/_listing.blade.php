@@ -80,20 +80,28 @@ PropertyManagement
                                                 </tr>
 
                                                 <tr>
-                                                    <td class="td-width"><p><b>Property ID</b></p></td>
-                                                    <td><p>{{$property -> p_id}}</p></td>
+                                                    <td class="td-width">
+                                                        <p><b>Property ID</b></p>
+                                                    </td>
+                                                    <td>
+                                                        <p>{{$property -> p_id}}</p>
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td class="td-width"><p><b>Property Name</b></p></td>
-                                                    <td><p>{{$property -> name}}</p></td>
+                                                    <td class="td-width">
+                                                        <p><b>Property Name</b></p>
+                                                    </td>
+                                                    <td>
+                                                        <p>{{$property -> name}}</p>
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
                                                     <td class="td-width" colspan="2">
                                                         <b>Description</b>
-                                                            <br>
-                                                            <span>
+                                                        <br>
+                                                        <span>
                                                             <p style="text-align:justify">
                                                                 {{$property->description}}
                                                             </p>
@@ -107,7 +115,8 @@ PropertyManagement
                                         {{-- ##modal body --}}
                                         {{-- modal footer --}}
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger form-control" data-bs-dismiss="modal">
+                                            <button type="button" class="btn btn-danger form-control"
+                                                data-bs-dismiss="modal">
                                                 Close
                                             </button>
                                         </div>

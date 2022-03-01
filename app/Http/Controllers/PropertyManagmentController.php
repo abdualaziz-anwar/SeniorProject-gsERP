@@ -44,7 +44,7 @@ class PropertyManagmentController extends Controller
         $property -> p_id = $request['property_id'];
         $property -> name = $request['name'];
         $property -> image = $desitinationPath . "/" . $name;
-        $property -> description = $request[description];
+        $property -> description = $request['description'];
         $property -> save();
 
         $response = [];
