@@ -6,9 +6,9 @@ PropertyManagement
 
 @section('pagecontent')
 <div class="container-fluid">
-    container-fluid
+
     <div class="inner-content">
-        inner content
+
         <button type="button" class="btn btn-success text-uppercase mt-4 mx-4 border-0"
             style="background-color:  #1C4E80;" id="addpropertybtn" data-bs-toggle="modal"
             data-bs-target="#addPropertModal">
@@ -126,8 +126,11 @@ PropertyManagement
                             </div>
                         </td>
                         {{-- TODO ONCLICK --}}
-                        <td><a href="#" class="btn text-primary" onclick="">Edit</a></td>
-                        <td><a href="#" class="btn text-danger" onclick="">Delete</a></td>
+                        <td><a href="#" class="btn text-primary"
+                                onclick="ajaxHandler.populateEditPropertForm({{$property -> id}})">Edit</a>
+                        </td>
+                        <td><a href="#" class="btn text-danger"
+                                onclick="ajaxHandler.deletePropert({{$property->id}})">Delete</a></td>
 
                     </tr>
                     @endforeach

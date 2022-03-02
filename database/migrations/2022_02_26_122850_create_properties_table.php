@@ -16,12 +16,12 @@ class CreatePropertiesTable extends Migration
     public function up()
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table-> id();
+            $table->id();
             // 
-            $table-> string('p_id');
-            $table-> string('name');
-            $table-> string('image');
-            $table-> string('description');
+            $table->string('p_id');
+            $table->string('name');
+            $table->string('image');
+            $table->string('description');
             // 
             $table->timestamps();
         });
