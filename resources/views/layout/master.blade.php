@@ -24,7 +24,7 @@
                 <div class="list-group list-group-flush my-3">
                     {{-- TDOD LATER FOR PAGES --}}
                     <a href="{{route('property-managment')}}" class="list-group-item  active">PropertyManagement</a>
-                    <a href="/" class="list-group-item   ">GasStationManagment</a>
+                    <a href="{{route('gsm')}}" class="list-group-item   ">GasStationManagment</a>
                     <a href="/" class="list-group-item ">LeaseHolders</a>
                     <a href="/" class="list-group-item ">Contracts</a>
                     <a href="/" class="list-group-item   ">Report Management</a>

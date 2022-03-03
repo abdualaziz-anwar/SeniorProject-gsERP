@@ -27,7 +27,9 @@ Route::post('/deletePropert', [\App\Http\Controllers\PropertyManagmentController
 Route::post('/populateEditPropertForm', [\App\Http\Controllers\PropertyManagmentController::class, 'populateEditPropertForm'])->name('populateEditPropertForm');
 // ##Property managment Routing
 
-
+// gsm-management routing
+Route::get('/gsm-management', [\App\Http\Controllers\GasStationManagerManagementController::class, 'getListing'])->name('gsm');
+// ##gsm-management routing
 
 // ##Propert managment Routing
 // Route::get('/propertyManagment' , 'PagesController@propertyManagment');
