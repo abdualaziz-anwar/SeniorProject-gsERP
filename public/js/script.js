@@ -37,6 +37,7 @@ $("addpropertybtn").on("click", function () {
 });
 // ##reseting the adding property form everytime we click it
 
+// property
 const ajaxHandler = {
     alertMessage: (msg, type = "success", el_id, auto_hide = true) => {
         var message = document.getElementById(el_id);
@@ -250,3 +251,13 @@ const ajaxHandler = {
         });
     },
 };
+// ##property
+
+// GasStation Manager
+const ajaxGasStationManagerHandler ={
+    
+    submitAddForm = ()=>{
+        
+    }
+}
+// ##GasStation Manager
