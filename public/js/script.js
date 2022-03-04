@@ -254,10 +254,92 @@ const ajaxHandler = {
 // ##property
 
 // GasStation Manager
-const ajaxGasStationManagerHandler ={
-    
-    submitAddForm = ()=>{
-        
-    }
-}
+const ajaxGasStationManagerHandler = {
+    submitAddForm: () => {
+        $("#addFrom").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 2,
+                },
+
+                f_name: {
+                    required: true,
+                    minlength: 2,
+                },
+
+                l_name: {
+                    required: true,
+                    minlength: 2,
+                },
+
+                g_id: {
+                    required: true,
+                    minlength: 3,
+                },
+
+                phone: {
+                    required: true,
+                },
+
+                email: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                },
+            },
+            // end of rules
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                email: "Please enter Email",
+                phone: "Please enter phone",
+                password: "Please type password",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#addFrom");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitAddGasStationManagerForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#addModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+};
 // ##GasStation Manager

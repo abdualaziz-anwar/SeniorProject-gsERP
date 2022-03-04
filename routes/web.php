@@ -29,6 +29,8 @@ Route::post('/populateEditPropertForm', [\App\Http\Controllers\PropertyManagment
 
 // gsm-management routing
 Route::get('/gsm-management', [\App\Http\Controllers\GasStationManagerManagementController::class, 'getListing'])->name('gsm');
+Route::post('/submitAddGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitAddForm'])->name('submitAddGasStationManagerForm');
+
 // ##gsm-management routing
 
 // ##Propert managment Routing
