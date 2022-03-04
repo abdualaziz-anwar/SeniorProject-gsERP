@@ -34,5 +34,27 @@ class GasStationManagerManagementController extends Controller
 
     function submitAddForm(Request $request)
     {
+
+        $gsm = $this->model;
+        // request gets from addform
+        $gsm->national_id = $request['national_id'];
+        $gsm->fname = $request['f_name'];
+        $gsm->lname = $request['l_name'];
+        $gsm->phone_no = $request['phone'];
+        $gsm->email = $request['email'];
+        $gsm->password = $request['password'];
+        $gsm->g_id = $request['g_id'];
+        $gsm->save();
+
+        $response = [];
+        if ($gsm) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Manager added successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+
+        return response()->json($response);
     }
 }
