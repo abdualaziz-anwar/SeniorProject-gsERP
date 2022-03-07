@@ -28,9 +28,13 @@ Route::post('/populateEditPropertForm', [\App\Http\Controllers\PropertyManagment
 // ##Property managment Routing
 
 // gsm-management routing
-Route::get('/gsm-management', [\App\Http\Controllers\GasStationManagerManagementController::class, 'getListing'])->name('gsm');
-Route::post('/submitAddGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitAddForm'])->name('submitAddGasStationManagerForm');
 
+
+Route::get('/gsm-managment', [\App\Http\Controllers\GasStationManagerManagementController::class, 'getListing'])->name('gsm');
+Route::post('/submitAddGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitAddForm'])->name('submitAddGasStationManagerForm');
+Route::post('/deleteGasStationManager', [\App\Http\Controllers\GasStationManagerManagementController::class, 'deleteItem'])->name('deleteGasStationManager');
+Route::post('/populateEditGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'populateEditForm'])->name('populateEditGasStationManagerForm');
+Route::post('/submitEditGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitEditForm'])->name('submitEditGasStationManagerForm');
 // ##gsm-management routing
 
 // ##Propert managment Routing

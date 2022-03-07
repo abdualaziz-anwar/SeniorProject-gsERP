@@ -80,6 +80,7 @@ class PropertyManagmentController extends Controller
         $property->p_id = $request['property_id'];
         $property->name = $request['name'];
         $property->description = $request['description'];
+        $property->save();
 
         $response = [];
         if ($property) {

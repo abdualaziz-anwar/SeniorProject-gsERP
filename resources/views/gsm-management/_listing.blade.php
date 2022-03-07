@@ -136,8 +136,10 @@ Manger Management
                             </div>
                         </td>
                         {{-- ##for view button --}}
-                        <td><a href="" class="btn text-primary" onclick="#">Edit</a></td>
-                        <td><a href="" class="btn text-danger" onclick="#">Delete</a></td>
+                        <td><a href="" class="btn text-primary"
+                                onclick="ajaxGasStationManagerHandler.populateEditForm({{$listItem->id}})">Edit</a></td>
+                        <td><a href="" class="btn text-danger"
+                                onclick="ajaxGasStationManagerHandler.deleteItem({{$listItem->id}})">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>
