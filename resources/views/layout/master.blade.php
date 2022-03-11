@@ -24,10 +24,11 @@
                 <div class="list-group list-group-flush my-3">
                     {{-- TDOD LATER FOR PAGES --}}
                     <a href="{{route('property-managment')}}"
-                        class="list-group-item  {{ @$slug == 'property'?'active':'' }}">PropertyManagement</a>
+                        class="list-group-item  {{ @$slug == 'property-managment'?'active':'' }}">PropertyManagement</a>
                     <a href="{{route('gsm')}}"
                         class="list-group-item  {{ @$slug == 'gsm'?'active':'' }} ">GasStationManagment</a>
-                    <a href="/" class="list-group-item ">LeaseHolders</a>
+                    <a href="{{route('leaseholder-management')}}"
+                        class="list-group-item {{ @$slug == 'leaseholder'?'active':'' }}">LeaseHolders</a>
                     <a href="/" class="list-group-item ">Contracts</a>
                     <a href="/" class="list-group-item   ">Report Management</a>
 

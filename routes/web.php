@@ -37,7 +37,11 @@ Route::post('/populateEditGasStationManagerForm', [\App\Http\Controllers\GasStat
 Route::post('/submitEditGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitEditForm'])->name('submitEditGasStationManagerForm');
 // ##gsm-management routing
 
-// ##Propert managment Routing
+// LeasHolder Routing
+Route::get('/Leaseholder-management', [\App\Http\Controllers\LeaseholderManagementController::class, 'getListing'])->name('leaseholder-management');
+// ##LeasHolder Routing
+
+
 // Route::get('/propertyManagment' , 'PagesController@propertyManagment');
 
 // Route::get('/gasStationManagment' , 'PagesController@gasStationManagment');
