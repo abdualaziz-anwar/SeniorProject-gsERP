@@ -140,9 +140,11 @@ LeaseHolder Management
                             </div>
                         </td>
                         {{-- TODO ONCLICK --}}
-                        <td><a href="#" class="btn text-primary" onclick="#">Edit</a>
+                        <td><a href="#" class="btn text-primary"
+                                onclick="ajaxLeaseHolderHandler.populateEditForm({{$leaseholder->id}})">Edit</a>
                         </td>
-                        <td><a href="#" class="btn text-danger" onclick="#">Delete</a></td>
+                        <td><a href="#" class="btn text-danger"
+                                onclick="ajaxLeaseHolderHandler.deleteItem({{$leaseholder->id}})">Delete</a></td>
 
                     </tr>
                     @endforeach

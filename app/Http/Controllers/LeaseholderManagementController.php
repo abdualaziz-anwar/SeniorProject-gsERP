@@ -28,7 +28,7 @@ class LeaseholderManagementController extends Controller
         ];
         return view($this->view_path . '._listing', $data);
     }
-
+    // adding for leaeholder
     public function submitAddForm(Request $request)
     {
         $leaseholder = $this->model;
@@ -48,6 +48,55 @@ class LeaseholderManagementController extends Controller
             $response['status'] = 'false';
             $response['msg'] = 'Some error occur, try again';
         }
+        return response()->json($response);
+    }
+    // ##adding for leaeholder
+
+    function submitEditForm(Request $request)
+    {
+        $leaseholder = $this->model;
+        $leaseholder = $leaseholder::find($request['edit_id']);
+        $leaseholder->national_id = $request['national_id'];
+        $leaseholder->fname = $request['f_name'];
+        $leaseholder->lname = $request['l_name'];
+        $leaseholder->email = $request['email'];
+        $leaseholder->phone_no = $request['phone'];
+        $leaseholder->duration_of = $request['duration_of'];
+        $leaseholder->save();
+
+        $response = [];
+        if ($leaseholder) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Leaseholder Edited successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+        return response()->json($response);
+    }
+
+    function deleteItem(Request $request)
+    {
+        $leaseholder = $this->model;
+        $leaseholder = $leaseholder::where('id', $request['id'])->delete();
+        $response = [];
+        if ($leaseholder) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Leaseholder deleted successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+        return response()->json($response);
+    }
+
+    function populateEditForm(Request $request)
+    {
+        $leaseholder = $this->model;
+        $formData = $leaseholder::where('id', $request['id'])->first();
+
+        $response = [];
+        $response['form_html'] = (string)view($this->view_path . '.editForm')->with('formData', $formData);
         return response()->json($response);
     }
 }

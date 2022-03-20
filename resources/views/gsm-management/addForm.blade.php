@@ -75,7 +75,7 @@
                     {{-- modal footer --}}
                     {{-- TODO ONCLICK--}}
                     <div class="modal-footer">
-                        <button onclick="ajaxGasStationManagerHandler.submitAddForm()"
+                        <button onclick="ajaxGasStationManagerHandler.submitaddFrom()"
                             class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Submit</button>
 

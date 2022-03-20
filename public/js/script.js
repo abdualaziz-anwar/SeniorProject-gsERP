@@ -455,3 +455,212 @@ const ajaxGasStationManagerHandler = {
     },
 };
 // ##GasStation Manager
+// leasholder
+const ajaxLeaseHolderHandler = {
+    deleteItem: (id) => {
+        loaderGif.show();
+        $.ajax({
+            url: "deleteLeaseholder",
+            type: "POST",
+            data: { id: id },
+            dataType: "JSON",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                if (res.status == "true") {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "success",
+                        "dashboard_alert_message",
+                        true
+                    );
+                    location.reload();
+                } else {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "danger",
+                        "dashboard_alert_message",
+                        true
+                    );
+                }
+                loaderGif.hide();
+            },
+        });
+    },
+
+    submitaddFrom: () => {
+        $("#addFrom").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 3,
+                },
+                f_name: {
+                    required: true,
+                },
+                l_name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                },
+                phone: {
+                    required: true,
+                },
+                duration_of: {
+                    required: true,
+                },
+            },
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                email: "Please enter Email",
+                phone: "Please enter phone",
+                duration_of: "Please select durationOf",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#addFrom");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitAddLeaseholderForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#addModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+
+    populateEditForm: (id) => {
+        loaderGif.show();
+        $("#editform")[0].reset();
+        $.ajax({
+            url: "populateEditLeaseholderForm",
+            type: "POST",
+            data: { id: id },
+            dataType: "HTML",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                var res = JSON.parse(res);
+                $("#editForm").html(res["form_html"]);
+                $("#editModal").modal("show");
+                loaderGif.hide();
+            },
+        });
+    },
+
+    submitEditForm: () => {
+        $("#editform").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 3,
+                },
+                f_name: {
+                    required: true,
+                },
+                l_name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                },
+                phone: {
+                    required: true,
+                },
+                duration_of: {
+                    required: true,
+                },
+            },
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                email: "Please enter Email",
+                phone: "Please enter phone",
+                duration_of: "Please select durationOf",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#editform");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitEditLeaseholderForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#editModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "edit_form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+};
+// ##leaseholder

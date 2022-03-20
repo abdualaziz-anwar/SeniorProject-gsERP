@@ -39,6 +39,11 @@ Route::post('/submitEditGasStationManagerForm', [\App\Http\Controllers\GasStatio
 
 // LeasHolder Routing
 Route::get('/Leaseholder-management', [\App\Http\Controllers\LeaseholderManagementController::class, 'getListing'])->name('leaseholder-management');
+Route::post('/submitAddLeaseholderForm', [\App\Http\Controllers\LeaseholderManagementController::class, 'submitAddForm'])->name('submitAddLeaseholderForm');
+Route::post('/deleteLeaseholder', [\App\Http\Controllers\LeaseholderManagementController::class, 'deleteItem'])->name('deleteLeaseholder');
+Route::post('/populateEditLeaseholderForm', [\App\Http\Controllers\LeaseholderManagementController::class, 'populateEditForm'])->name('populateEditLeaseholderForm');
+Route::post('/submitEditLeaseholderForm', [\App\Http\Controllers\LeaseholderManagementController::class, 'submitEditForm'])->name('submitEditLeaseholderForm');
+
 // ##LeasHolder Routing
 
 
