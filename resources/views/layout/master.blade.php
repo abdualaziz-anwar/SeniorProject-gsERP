@@ -32,7 +32,7 @@
                     <a href="{{route('leaseholder-management')}}"
                         class="list-group-item {{ @$slug == 'leaseholder'?'active':'' }}">LeaseHolders</a>
 
-                    <a href="/" class="list-group-item ">Contracts</a>
+                    <a href="{{route('contracts')}}" class="list-group-item ">Contracts</a>
 
                     <a href="/" class="list-group-item   ">Report Management</a>
 
