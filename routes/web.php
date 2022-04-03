@@ -48,6 +48,8 @@ Route::post('/submitEditLeaseholderForm', [\App\Http\Controllers\LeaseholderMana
 
 // contracts Routing
 Route::get('/contracts-management', [\App\Http\Controllers\ContractsManagementController::class, 'getListing'])->name('contracts');
+Route::post('/submitAddContractForm', [\App\Http\Controllers\ContractsManagementController::class, 'submitAddForm'])->name("submitAddContractForm");
+Route::post('/deleteContracts', [\App\Http\Controllers\ContractsManagementController::class, 'deleteItem'])->name('deleteContracts');
  // ##contracts Routing
 
 // Route::get('/propertyManagment' , 'PagesController@propertyManagment');

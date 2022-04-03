@@ -60,7 +60,7 @@
 
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="email" class="form-control" placeholder="Enter Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
                         </div>
                     </div>
 
@@ -73,7 +73,6 @@
 
 
                     {{-- modal footer --}}
-                    {{-- TODO ONCLICK--}}
                     <div class="modal-footer">
                         <button onclick="ajaxGasStationManagerHandler.submitaddFrom()"
                             class="btn btn-success form-control border-0"

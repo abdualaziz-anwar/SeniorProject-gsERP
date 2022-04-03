@@ -39,4 +39,46 @@ class ContractsManagementController extends Controller
         ];
         return view($this->view_path . "._listing", $data);
     }
+
+    //------------------------------------
+
+    function submitAddForm(Request $request)
+    {
+        $contract = $this->model;
+
+        $contract->contract_id = $request['contract_id'];
+        $contract->property_id = $request['property_id'];
+        $contract->leaseholder_id = $request['leaseholder_id'];
+        $contract->from_date = $request['from_date'];
+        $contract->to_date = $request['to_date'];
+        $contract->save();
+
+        $response = [];
+        if ($contract) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Contract added successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+        return response()->json($response);
+    }
+
+    //-----------------------------------
+
+    function deleteItem(Request $request)
+    {
+        $contract = $this->model;
+        $contract = $contract::where('id', $request['id'])->delete();
+
+        $response = [];
+        if ($contract) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Contract deleted successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+        return response()->json($response);
+    }
 }

@@ -56,7 +56,7 @@ Contracts Management
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title " id="exampleModalLabel">EmployeeReport:
+                                            <h5 class="modal-title " id="exampleModalLabel">
                                                 {{$listItem->fname.' '.$listItem->lname}}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -136,7 +136,8 @@ Contracts Management
                             </div>
                         </td>
                         <td><a href="#" class="btn text-primary" onclick="#">Edit</a></td>
-                        <td><a href="#" class="btn text-danger" onclick="#">Delete</a></td>
+                        <td><a href="#" class="btn text-danger"
+                                onclick="ajaxContractHandler.deleteItem({{$listItem->con_id}})">Delete</a></td>
                     </tr>
                     {{-- end loop --}}
                     @endforeach

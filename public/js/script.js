@@ -252,7 +252,7 @@ const ajaxHandler = {
     },
 };
 // ##property
-// -------------------------------------------------------
+
 // GasStation Manager
 const ajaxGasStationManagerHandler = {
     deleteItem: (id) => {
@@ -455,6 +455,7 @@ const ajaxGasStationManagerHandler = {
     },
 };
 // ##GasStation Manager
+
 // leasholder
 const ajaxLeaseHolderHandler = {
     deleteItem: (id) => {
@@ -665,6 +666,112 @@ const ajaxLeaseHolderHandler = {
 };
 // ##leaseholder
 
-//-----------------------
-
 // Contracts
+const ajaxContractHandler = {
+    deleteItem: (id) => {
+        loaderGif.show();
+        $.ajax({
+            url: "deleteContracts",
+            type: "POST",
+            data: { id: id },
+            dataType: "JSON",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                if (res.status == "true") {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "success",
+                        "dashboard_alert_message",
+                        true
+                    );
+                    location.reload();
+                } else {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "danger",
+                        "dashboard_alert_message",
+                        true
+                    );
+                }
+                loaderGif.hide();
+            },
+        });
+    },
+
+    submitaddForm: () => {
+        $("#addForm").validate({
+            rules: {
+                contract_id: {
+                    required: true,
+                },
+                property_id: {
+                    required: true,
+                },
+                leaseholder_id: {
+                    required: true,
+                },
+                from_date: {
+                    required: true,
+                },
+                to_date: {
+                    required: true,
+                },
+            },
+
+            messages: {
+                contract_id: "Please enter the contract id",
+                property_id: "choose the property",
+                leaseholder_id: "choose the leaseholder",
+                from_date: "select date",
+                to_date: "select  date",
+            },
+
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#addForm");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitAddContractForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#addModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.message,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.message,
+                                "danger",
+                                "form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+};
