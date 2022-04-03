@@ -774,4 +774,94 @@ const ajaxContractHandler = {
             },
         });
     },
+
+    populateEditForm: (id) => {
+        loaderGif.show();
+        $("#editform")[0].reset();
+        $.ajax({
+            url: "populateEditContractsForm",
+            type: "POST",
+            data: { id: id },
+            dataType: "HTML",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                var res = JSON.parse(res);
+                $("#editForm").html(res["form_html"]);
+                $("#editModal").modal("show");
+                loaderGif.hide();
+            },
+        });
+    },
+
+    submitEditForm: () => {
+        $("#editform").validate({
+            rules: {
+                contract_id: {
+                    required: true,
+                },
+                property_id: {
+                    required: true,
+                },
+                leaseholder_id: {
+                    required: true,
+                },
+                from_date: {
+                    required: true,
+                },
+                to_date: {
+                    required: true,
+                },
+            },
+
+            messages: {
+                contract_id: "Please enter the contract id",
+            },
+
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#editform");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitEditContractForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#editModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "edit_form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
 };

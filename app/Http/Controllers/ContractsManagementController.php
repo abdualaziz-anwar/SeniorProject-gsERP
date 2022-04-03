@@ -81,4 +81,40 @@ class ContractsManagementController extends Controller
         }
         return response()->json($response);
     }
+
+    function submitEditForm(Request $request)
+    {
+        $contract = $this->model;
+        $contract = $contract::find($request['edit_id']);
+
+        $contract->contract_id = $request['contract_id'];
+        $contract->property_id = $request['property_id'];
+        $contract->leaseholder_id = $request['leaseholder_id'];
+        $contract->from_date = $request['from_date'];
+        $contract->to_date = $request['to_date'];
+        $contract->save();
+
+        $response = [];
+        if ($contract) {
+            $response['status'] = 'true';
+            $response['msg'] = 'Contract edited successfully';
+        } else {
+            $response['status'] = 'false';
+            $response['msg'] = 'Some error occur, try again';
+        }
+        return response()->json($response);
+    }
+
+    function populateEditForm(Request $request)
+    {
+        $contract = $this->model;
+        $formData = $contract::where('id', $request['id'])->first();
+
+        $properties = Property::all();
+        $leaseholders = Leaseholder::all();
+
+        $response = [];
+        $response['form_html'] = (string)view($this->view_path . '.editForm')->with(['formData' => $formData, 'properties' => $properties, 'leaseholders' => $leaseholders]);
+        return response()->json($response);
+    }
 }

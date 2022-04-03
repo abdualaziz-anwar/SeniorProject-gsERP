@@ -135,7 +135,8 @@ Contracts Management
                                 {{-- ##view button --}}
                             </div>
                         </td>
-                        <td><a href="#" class="btn text-primary" onclick="#">Edit</a></td>
+                        <td><a href="#" class="btn text-primary"
+                                onclick="ajaxContractHandler.populateEditForm({{$listItem->con_id}})">Edit</a></td>
                         <td><a href="#" class="btn text-danger"
                                 onclick="ajaxContractHandler.deleteItem({{$listItem->con_id}})">Delete</a></td>
                     </tr>
