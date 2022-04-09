@@ -5,15 +5,14 @@ toggleButton.onclick = function () {
     el.classList.toggle("toggled");
 };
 
-$("#AddUserModel").on("shown.bs.modal", function () {
-    document.body.classList.add("modal-open");
-});
-$("#viewDataModel").on("shown.bs.modal", function () {
-    document.body.classList.add("modal-open");
-});
+// $("#AddUserModel").on("shown.bs.modal", function () {
+//     document.body.classList.add("modal-open");
+// });
+// $("#viewDataModel").on("shown.bs.modal", function () {
+//     document.body.classList.add("modal-open");
+// });
 
 // DashBoard Loader.
-
 var loader_el = document.getElementById("dashboard_loader");
 var loaderGif = {
     show: () => {
@@ -29,13 +28,9 @@ var loaderGif = {
 };
 // ##DashBoard Loader.
 
-// ---------------property--------------------------
-
-// reseting the adding property form everytime we click it
-$("addpropertybtn").on("click", function () {
-    $("addProperty")[0].reset();
+$("#addNewButton").on("click", function () {
+    $("#addForm")[0].reset();
 });
-// ##reseting the adding property form everytime we click it
 
 // property
 const ajaxHandler = {
@@ -98,7 +93,7 @@ const ajaxHandler = {
     },
 
     submitAddPropertForm: () => {
-        $("#addProperty").validate({
+        $("#addForm").validate({
             rules: {
                 name: {
                     required: true,
@@ -123,7 +118,7 @@ const ajaxHandler = {
             },
             submitHandler: function (form) {
                 loaderGif.show();
-                var form = $("#addProperty");
+                var form = $("#addForm");
                 var formData = new FormData(form[0]);
 
                 $.ajax({
@@ -288,8 +283,8 @@ const ajaxGasStationManagerHandler = {
             },
         });
     },
-    submitaddFrom: () => {
-        $("#addFrom").validate({
+    submitaddForm: () => {
+        $("#addForm").validate({
             rules: {
                 national_id: {
                     required: true,
@@ -321,7 +316,7 @@ const ajaxGasStationManagerHandler = {
             },
             submitHandler: function (form) {
                 loaderGif.show();
-                var form = $("#addFrom");
+                var form = $("#addForm");
                 var formData = new FormData(form[0]);
 
                 $.ajax({
@@ -492,8 +487,8 @@ const ajaxLeaseHolderHandler = {
         });
     },
 
-    submitaddFrom: () => {
-        $("#addFrom").validate({
+    submitaddForm: () => {
+        $("#addForm").validate({
             rules: {
                 national_id: {
                     required: true,
@@ -525,7 +520,7 @@ const ajaxLeaseHolderHandler = {
             },
             submitHandler: function (form) {
                 loaderGif.show();
-                var form = $("#addFrom");
+                var form = $("#addForm");
                 var formData = new FormData(form[0]);
 
                 $.ajax({

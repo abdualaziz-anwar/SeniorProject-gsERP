@@ -1,5 +1,5 @@
 {{-- adding property modal --}}
-<div class="modal fade" id="addPropertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         {{-- modal content --}}
         <div class="modal-content">
@@ -11,7 +11,7 @@
             {{-- ##modal header --}}
             {{-- modal body --}}
             <div class="modal-body">
-                <form action="#" id="addProperty">
+                <form action="#" id="addForm">
 
                     {{-- alert message div --}}
                     <div class="row">

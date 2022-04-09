@@ -10,7 +10,7 @@
             {{-- ##modal header --}}
             {{-- modal body --}}
             <div class="modal-body">
-                <form action="#" id="addFrom">
+                <form action="#" id="addForm">
 
                     <div class="row">
                         <div class="col  text-center ">
@@ -56,7 +56,7 @@
                     </div>
                     {{-- modal footer --}}
                     <div class="modal-footer">
-                        <button onclick="ajaxLeaseHolderHandler.submitaddFrom()"
+                        <button onclick="ajaxLeaseHolderHandler.submitaddForm()"
                             class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Submit</button>
                         <button type="button" class="btn btn-danger form-control border-0" data-bs-dismiss="modal">Close

@@ -9,7 +9,7 @@ Manger Management
     <div class="inner-content">
         {{-- button trigger modal --}}
         <button type="button" class="btn btn-success text-uppercase mt-4 mx-4 border-0"
-            style="background-color: #1C4E80;" id="addleaseholderbtn" data-bs-toggle="modal" data-bs-target="#addModal">
+            style="background-color: #1C4E80;" id="addNewButton" data-bs-toggle="modal" data-bs-target="#addModal">
             Add New Gas Station Manager
         </button>
 

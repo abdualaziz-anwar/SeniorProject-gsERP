@@ -10,8 +10,7 @@ PropertyManagement
     <div class="inner-content">
 
         <button type="button" class="btn btn-success text-uppercase mt-4 mx-4 border-0"
-            style="background-color:  #1C4E80;" id="addpropertybtn" data-bs-toggle="modal"
-            data-bs-target="#addPropertModal">
+            style="background-color:  #1C4E80;" id="addNewButton" data-bs-toggle="modal" data-bs-target="#addModal">
             add New Property
         </button>
         {{-- add form modal --}}

@@ -28,8 +28,6 @@ Route::post('/populateEditPropertForm', [\App\Http\Controllers\PropertyManagment
 // ##Property managment Routing
 
 // gsm-management routing
-
-
 Route::get('/gsm-managment', [\App\Http\Controllers\GasStationManagerManagementController::class, 'getListing'])->name('gsm');
 Route::post('/submitAddGasStationManagerForm', [\App\Http\Controllers\GasStationManagerManagementController::class, 'submitAddForm'])->name('submitAddGasStationManagerForm');
 Route::post('/deleteGasStationManager', [\App\Http\Controllers\GasStationManagerManagementController::class, 'deleteItem'])->name('deleteGasStationManager');
@@ -43,7 +41,6 @@ Route::post('/submitAddLeaseholderForm', [\App\Http\Controllers\LeaseholderManag
 Route::post('/deleteLeaseholder', [\App\Http\Controllers\LeaseholderManagementController::class, 'deleteItem'])->name('deleteLeaseholder');
 Route::post('/populateEditLeaseholderForm', [\App\Http\Controllers\LeaseholderManagementController::class, 'populateEditForm'])->name('populateEditLeaseholderForm');
 Route::post('/submitEditLeaseholderForm', [\App\Http\Controllers\LeaseholderManagementController::class, 'submitEditForm'])->name('submitEditLeaseholderForm');
-
 // ##LeasHolder Routing
 
 // contracts Routing
@@ -52,8 +49,4 @@ Route::post('/submitAddContractForm', [\App\Http\Controllers\ContractsManagement
 Route::post('/deleteContracts', [\App\Http\Controllers\ContractsManagementController::class, 'deleteItem'])->name('deleteContracts');
 Route::post('/submitEditContractForm', [\App\Http\Controllers\ContractsManagementController::class, 'submitEditForm'])->name('submitEditContractForm');
 Route::post('/populateEditContractsForm', [\App\Http\Controllers\ContractsManagementController::class, 'populateEditForm'])->name('populateEditContractsForm');
- // ##contracts Routing
-
-// Route::get('/propertyManagment' , 'PagesController@propertyManagment');
-
-// Route::get('/gasStationManagment' , 'PagesController@gasStationManagment');
+// ##contracts Routing

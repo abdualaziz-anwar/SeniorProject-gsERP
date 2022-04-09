@@ -12,7 +12,7 @@
             {{-- ##modal header --}}
             {{-- modal body --}}
             <div class="modal-body">
-                <form action="#" id="addFrom">
+                <form action="#" id="addForm">
 
                     {{-- alert message div --}}
                     <div class="row">
@@ -74,7 +74,7 @@
 
                     {{-- modal footer --}}
                     <div class="modal-footer">
-                        <button onclick="ajaxGasStationManagerHandler.submitaddFrom()"
+                        <button onclick="ajaxGasStationManagerHandler.submitaddForm()"
                             class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Submit</button>
 
