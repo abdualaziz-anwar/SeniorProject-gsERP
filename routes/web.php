@@ -50,3 +50,10 @@ Route::post('/deleteContracts', [\App\Http\Controllers\ContractsManagementContro
 Route::post('/submitEditContractForm', [\App\Http\Controllers\ContractsManagementController::class, 'submitEditForm'])->name('submitEditContractForm');
 Route::post('/populateEditContractsForm', [\App\Http\Controllers\ContractsManagementController::class, 'populateEditForm'])->name('populateEditContractsForm');
 // ##contracts Routing
+
+//employee
+Route::get('/employee-management', [\App\Http\Controllers\EmployeeManagmenetController::class, 'getListing'])->name('employee-management');
+Route::post('/submitAddEmployeeForm', [\App\Http\Controllers\EmployeeManagementController::class, 'submitAddForm'])->name('submitAddEmployeeForm');
+Route::post('/deleteEmployee', [\App\Http\Controllers\EmployeeManagmenetController::class, "deleteItem"])->name('deleteEmployee');
+Route::post('/submitEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'submitEditForm'])->name('submitEditEmployeeForm');
+Route::post('/populateEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'populateEditForm'])->name('populateEditEmployeeForm');

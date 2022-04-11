@@ -46,7 +46,7 @@ class GasStationManagerManagementController extends Controller
         $response = [];
         if ($gsm) {
             $response['status'] = 'true';
-            $response['msg'] = 'Employee added successfully';
+            $response['msg'] = 'Gas station manager added successfully';
         } else {
             $response['status'] = 'false';
             $response['msg'] = 'Some error occur, try again';

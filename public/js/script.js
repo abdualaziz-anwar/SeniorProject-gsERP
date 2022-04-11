@@ -5,13 +5,6 @@ toggleButton.onclick = function () {
     el.classList.toggle("toggled");
 };
 
-// $("#AddUserModel").on("shown.bs.modal", function () {
-//     document.body.classList.add("modal-open");
-// });
-// $("#viewDataModel").on("shown.bs.modal", function () {
-//     document.body.classList.add("modal-open");
-// });
-
 // DashBoard Loader.
 var loader_el = document.getElementById("dashboard_loader");
 var loaderGif = {
@@ -32,16 +25,20 @@ $("#addNewButton").on("click", function () {
     $("#addForm")[0].reset();
 });
 
+$.validator.addMethod("PScheck", function (value) {
+    return (
+        /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) && // consists of only these
+        /[a-z]/.test(value) && // has a lowercase letter
+        /[A-Z]/.test(value) && // has upper case letter
+        /\d/.test(value)
+    ); // has a digit
+});
+
 // property
 const ajaxHandler = {
     alertMessage: (msg, type = "success", el_id, auto_hide = true) => {
         var message = document.getElementById(el_id);
-        message.innerHTML =
-            ' <p class="' +
-            type +
-            '">' +
-            msg +
-            '<button class="border-bg-unset" id="alert-message-close"><i class="bi bi-x-circle-fill orange alert-close-btn"></i></button></p>';
+        message.innerHTML = ' <p class="' + type + '">' + msg;
         setTimeout(() => {
             const options = {
                 behavior: "auto",
@@ -49,7 +46,7 @@ const ajaxHandler = {
                 inline: "start",
             };
             document.getElementById(el_id).scrollIntoView(options);
-        }, 100);
+        }, 1000);
         if (auto_hide) {
             setTimeout(() => {
                 message.innerHTML = "";
@@ -136,7 +133,7 @@ const ajaxHandler = {
                     },
                     success: function (res) {
                         if (res.status == "true") {
-                            $("#addPropertModal").modal("hide");
+                            $("#addModal").modal("hide");
                             form[0].reset();
                             ajaxHandler.alertMessage(
                                 res.msg,
@@ -288,7 +285,7 @@ const ajaxGasStationManagerHandler = {
             rules: {
                 national_id: {
                     required: true,
-                    minlength: 3,
+                    minlength: 9,
                 },
                 f_name: {
                     required: true,
@@ -298,21 +295,26 @@ const ajaxGasStationManagerHandler = {
                 },
                 email: {
                     required: true,
+                    email: true,
                 },
                 phone: {
                     required: true,
                 },
                 password: {
                     required: true,
+                    minlength: 6,
+                    PScheck: true,
                 },
             },
             messages: {
                 f_name: "Please enter First name",
                 l_name: "Please enter last name",
-                national_id: "Please enter National ID",
+                national_id:
+                    "Please enter National ID (must be atleast 9 numbers)",
                 email: "Please enter Email",
                 phone: "Please enter phone",
-                password: "Please type password",
+                password:
+                    "Please type password (must have UpperCase & LowerCase & Numbers)",
             },
             submitHandler: function (form) {
                 loaderGif.show();
@@ -393,9 +395,15 @@ const ajaxGasStationManagerHandler = {
                 },
                 email: {
                     required: true,
+                    email: true,
                 },
                 phone: {
                     required: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                    PScheck: true,
                 },
             },
             messages: {
@@ -411,7 +419,7 @@ const ajaxGasStationManagerHandler = {
                 var formData = new FormData(form[0]);
 
                 $.ajax({
-                    url: "submitEditGasStationManagerForm",
+                    url: "submitAddGasStationManagerForm",
                     type: "POST",
                     data: formData,
                     dataType: "JSON",
@@ -502,6 +510,7 @@ const ajaxLeaseHolderHandler = {
                 },
                 email: {
                     required: true,
+                    email: true,
                 },
                 phone: {
                     required: true,
@@ -749,18 +758,18 @@ const ajaxContractHandler = {
                             $("#addModal").modal("hide");
                             form[0].reset();
                             ajaxHandler.alertMessage(
-                                res.message,
+                                res.msg,
                                 "success",
                                 "dashboard_alert_message",
-                                false
+                                true
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
-                                res.message,
+                                res.msg,
                                 "danger",
-                                "form_alert_msg",
-                                false
+                                "dashboard_alert_message",
+                                true
                             );
                         }
                         loaderGif.hide();
@@ -860,3 +869,211 @@ const ajaxContractHandler = {
         });
     },
 };
+// ## contracts
+
+//employees
+const ajaxEmployeeHandler = {
+    deleteItem: (id) => {
+        loaderGif.show();
+        $.ajax({
+            url: "deleteEmployee",
+            type: "POST",
+            data: { id: id },
+            dataType: "JSON",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                if (res.status == "true") {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "success",
+                        "dashboard_alert_message",
+                        true
+                    );
+                    location.reload();
+                } else {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "danger",
+                        "dashboard_alert_message",
+                        true
+                    );
+                }
+                loaderGif.hide();
+            },
+        });
+    },
+    submitaddForm: () => {
+        $("#addForm").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 9,
+                },
+                f_name: {
+                    required: true,
+                },
+                l_name: {
+                    required: true,
+                },
+                token_id: {
+                    required: true,
+                },
+                phone: {
+                    required: true,
+                },
+                salary: {
+                    required: true,
+                },
+            },
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                token_id: "Please enter Token_id",
+                phone: "Please enter phone",
+                salary: "Please enter salary",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#addForm");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitAddEmployeeForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#addModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+    populateEditForm: (id) => {
+        loaderGif.show();
+        $("#editform")[0].reset();
+        $.ajax({
+            url: "populateEditEmployeeForm",
+            type: "POST",
+            data: { id: id },
+            dataType: "HTML",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                var res = JSON.parse(res);
+                $("#editForm").html(res["form_html"]);
+                $("#editModal").modal("show");
+                loaderGif.hide();
+            },
+        });
+    },
+    submitEditForm: () => {
+        $("#editform").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 9,
+                },
+                f_name: {
+                    required: true,
+                },
+                l_name: {
+                    required: true,
+                },
+                token_id: {
+                    required: true,
+                },
+                phone: {
+                    required: true,
+                },
+                salary: {
+                    required: true,
+                },
+            },
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                token_id: "Please enter Token_id",
+                phone: "Please enter phone",
+                salary: "Please enter salary",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#editform");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitEditEmployeeForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#editModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "edit_form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+};
+// ##employees

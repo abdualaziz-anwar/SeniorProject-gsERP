@@ -24,22 +24,23 @@
                 <div class="list-group list-group-flush my-3">
                     {{-- TDOD LATER FOR PAGES --}}
                     <a href="{{route('property-managment')}}"
-                        class="list-group-item  {{ @$slug == 'property-managment'?'active':'' }}">PropertyManagement</a>
+                        class="list-group-item  {{ $slug == 'property-managment'?'active':'' }}">Property Management</a>
 
-                    <a href="{{route('gsm')}}"
-                        class="list-group-item  {{ @$slug == 'gsm'?'active':'' }}">GasStationManagment</a>
+                    <a href="{{route('gsm')}}" class="list-group-item  {{ $slug == 'gsm'?'active':'' }}">GasStation
+                        Managment</a>
 
                     <a href="{{route('leaseholder-management')}}"
-                        class="list-group-item {{ @$slug == 'leaseholder'?'active':'' }}">LeaseHolders</a>
+                        class="list-group-item {{ $slug == 'leaseholder'?'active':'' }}">LeaseHolders</a>
 
                     <a href="{{route('contracts')}}"
-                        class="list-group-item {{@$slug == 'contracts'?'active':''}} ">Contracts</a>
+                        class="list-group-item {{ @$slug == 'contracts'?'active':''}} ">Contracts</a>
 
                     <a href="/" class="list-group-item">Report Management</a>
 
                     <a href="/" class="list-group-item">Add Employee Report</a>
 
-                    <a href="/" class="list-group-item">Employee Management</a>
+                    <a href="{{route('employee-management')}}"
+                        class="list-group-item {{ $slug == 'employee'?'active':''}}">Employee Management</a>
 
                 </div>
             </div>
@@ -72,7 +73,7 @@
                                 </a>
                                 {{-- TODO logout page --}}
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/">Logout</a></li>
+                                    <li><a class="dropdown-item" href="#">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
