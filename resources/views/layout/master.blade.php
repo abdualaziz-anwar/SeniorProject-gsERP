@@ -37,7 +37,8 @@
 
                     <a href="/" class="list-group-item">Report Management</a>
 
-                    <a href="/" class="list-group-item">Add Employee Report</a>
+                    <a href="{{route('employee-report')}}"
+                        class="list-group-item {{ @$slug == 'employee-report'?'active':''}}">Add Employee Report</a>
 
                     <a href="{{route('employee-management')}}"
                         class="list-group-item {{ $slug == 'employee'?'active':''}}">Employee Management</a>

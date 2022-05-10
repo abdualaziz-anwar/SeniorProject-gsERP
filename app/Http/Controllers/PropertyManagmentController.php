@@ -21,8 +21,8 @@ class PropertyManagmentController extends Controller
     // getting the property data.
     function getListing()
     {
-
         $data = [
+
             'allProperty' => Property::all(),
             'view_path' => $this->view_path,
             'slug' => $this->slug,
@@ -41,9 +41,10 @@ class PropertyManagmentController extends Controller
         $name = "item-" . rand(1000000, 9999999) . "." . $extension;
         $desitinationPath = 'images';
         $file->move($desitinationPath, $name);
-
+        // insert
         $property = new Property();
         $property->p_id = $request['property_id'];
+        // $property->p_id = $request->input('property_id');
         $property->name = $request['name'];
         $property->image = $desitinationPath . "/" . $name;
         $property->description = $request['description'];
@@ -68,7 +69,7 @@ class PropertyManagmentController extends Controller
 
         $file = $request->file('image');
         $property = Property::find($request['edit_id']);
-
+        //declared -> not null
         if (isset($file)) {
             $extension = $file->guessClientExtension();
             $name = "item-" . rand(1000000, 9999999) . "." . $extension;

@@ -57,3 +57,11 @@ Route::post('/submitAddEmployeeForm', [\App\Http\Controllers\EmployeeManagementC
 Route::post('/deleteEmployee', [\App\Http\Controllers\EmployeeManagmenetController::class, "deleteItem"])->name('deleteEmployee');
 Route::post('/submitEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'submitEditForm'])->name('submitEditEmployeeForm');
 Route::post('/populateEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'populateEditForm'])->name('populateEditEmployeeForm');
+
+//employee Report
+Route::get('/employee-report', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'getListing'])->name('employee-report');
+Route::post('/submitAddEmployeeReportForm', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'submitAddForm'])->name('submitAddEmployeeReportForm');
+Route::post('/deleteEmployeeReport', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'deleteItem'])->name('deleteEmployeeReport');
+Route::post('/populateEditEmployeeReportForm', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'populateEditForm'])->name('populateEditEmployeeReportForm');
+Route::post('/submitEditEmployeeReportForm', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'submitEditForm'])->name('submitEditEmployeeReportForm');
+//##employee Report

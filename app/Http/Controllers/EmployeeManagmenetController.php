@@ -69,7 +69,7 @@ class EmployeeManagmenetController extends Controller
 
         if ($employee) {
             $response['status'] = 'true';
-            $response['msg'] = 'Employee added successfully.';
+            $response['msg'] = 'Employee Edited successfully.';
         } else {
             $response['status'] = 'false';
             $response['msg'] = 'some Error occured please try again';

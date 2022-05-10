@@ -33,10 +33,12 @@ $.validator.addMethod("PScheck", function (value) {
         /\d/.test(value)
     ); // has a digit
 });
+//cache = false in a post method ->
+//except in IE8 when a POST is made to a URL that has already been requested by a GET.
 
 // property
 const ajaxHandler = {
-    alertMessage: (msg, type = "success", el_id, auto_hide = true) => {
+    alertMessage: (msg, type = "success", el_id) => {
         var message = document.getElementById(el_id);
         message.innerHTML = ' <p class="' + type + '">' + msg;
         setTimeout(() => {
@@ -47,11 +49,6 @@ const ajaxHandler = {
             };
             document.getElementById(el_id).scrollIntoView(options);
         }, 1000);
-        if (auto_hide) {
-            setTimeout(() => {
-                message.innerHTML = "";
-            }, 5000);
-        }
     },
 
     deletePropert: (id) => {
@@ -71,8 +68,7 @@ const ajaxHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "success",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                     // refresh the page if all work.
                     location.reload();
@@ -80,8 +76,7 @@ const ajaxHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "danger",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                 }
                 loaderGif.hide();
@@ -138,16 +133,14 @@ const ajaxHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "form_alert_msg",
-                                false
+                                "form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -224,16 +217,14 @@ const ajaxHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "edit_form_alert_msg",
-                                false
+                                "edit_form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -264,16 +255,14 @@ const ajaxGasStationManagerHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "success",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                     location.reload();
                 } else {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "danger",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                 }
                 loaderGif.hide();
@@ -341,16 +330,14 @@ const ajaxGasStationManagerHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "form_alert_msg",
-                                false
+                                "form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -438,16 +425,14 @@ const ajaxGasStationManagerHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "edit_form_alert_msg",
-                                false
+                                "edit_form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -478,16 +463,14 @@ const ajaxLeaseHolderHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "success",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                     location.reload();
                 } else {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "danger",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                 }
                 loaderGif.hide();
@@ -552,16 +535,14 @@ const ajaxLeaseHolderHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "form_alert_msg",
-                                false
+                                "form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -649,16 +630,14 @@ const ajaxLeaseHolderHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "edit_form_alert_msg",
-                                false
+                                "edit_form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -689,16 +668,14 @@ const ajaxContractHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "success",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                     location.reload();
                 } else {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "danger",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                 }
                 loaderGif.hide();
@@ -760,16 +737,14 @@ const ajaxContractHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                true
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "dashboard_alert_message",
-                                true
+                                "dashboard_alert_message"
                             );
                         }
                         loaderGif.hide();
@@ -850,16 +825,14 @@ const ajaxContractHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "edit_form_alert_msg",
-                                false
+                                "edit_form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -890,16 +863,14 @@ const ajaxEmployeeHandler = {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "success",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                     location.reload();
                 } else {
                     ajaxHandler.alertMessage(
                         res.msg,
                         "danger",
-                        "dashboard_alert_message",
-                        true
+                        "dashboard_alert_message"
                     );
                 }
                 loaderGif.hide();
@@ -962,16 +933,14 @@ const ajaxEmployeeHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
-                                "dashboard_alert_message",
-                                false
+                                "dashboard_alert_message"
                             );
                             location.reload();
                         } else {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "danger",
-                                "form_alert_msg",
-                                false
+                                "form_alert_msg"
                             );
                         }
                         loaderGif.hide();
@@ -1057,6 +1026,206 @@ const ajaxEmployeeHandler = {
                             ajaxHandler.alertMessage(
                                 res.msg,
                                 "success",
+                                "dashboard_alert_message"
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "edit_form_alert_msg"
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+};
+// ##employees
+
+//employee report
+const ajaxEmployeeReportHandler = {
+    deleteItem: (id) => {
+        loaderGif.show();
+        $.ajax({
+            url: "deleteEmployeeReport",
+            type: "POST",
+            data: { id: id },
+            dataType: "JSON",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                if (res.status == "true") {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "success",
+                        "dashboard_alert_message",
+                        true
+                    );
+                    location.reload();
+                } else {
+                    ajaxHandler.alertMessage(
+                        res.msg,
+                        "danger",
+                        "dashboard_alert_message",
+                        true
+                    );
+                }
+                loaderGif.hide();
+            },
+        });
+    },
+    submitaddFrom: () => {
+        $("#addForm").validate({
+            rules: {
+                employee_id: {
+                    required: true,
+                },
+                pump_capacity: {
+                    required: true,
+                },
+                fuel_type: {
+                    required: true,
+                },
+                sales: {
+                    required: true,
+                },
+                total: {
+                    required: true,
+                },
+                report_date: {
+                    required: true,
+                },
+            },
+            messages: {
+                employee_id: "Please select employee",
+                pump_capacity: "Please enter Emailpump capacity",
+                fuel_type: "Please enter fuel type",
+                sales: "Please type sales",
+                total: "Please type total",
+                report_date: "Please select report date",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#addForm");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitAddEmployeeReportForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#addModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
+                                "dashboard_alert_message",
+                                false
+                            );
+                            location.reload();
+                        } else {
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "danger",
+                                "form_alert_msg",
+                                false
+                            );
+                        }
+                        loaderGif.hide();
+                    },
+                });
+            },
+        });
+    },
+    populateEditForm: (id) => {
+        loaderGif.show();
+        $("#editform")[0].reset();
+        $.ajax({
+            url: "populateEditEmployeeReportForm",
+            type: "POST",
+            data: { id: id },
+            dataType: "HTML",
+            headers: {
+                "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                    "content"
+                ),
+            },
+            success: function (res) {
+                var res = JSON.parse(res);
+                $("#editForm").html(res["form_html"]);
+                $("#editModal").modal("show");
+                loaderGif.hide();
+            },
+        });
+    },
+    submitEditForm: () => {
+        $("#editform").validate({
+            rules: {
+                national_id: {
+                    required: true,
+                    minlength: 3,
+                },
+                f_name: {
+                    required: true,
+                },
+                l_name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                },
+                phone: {
+                    required: true,
+                },
+            },
+            messages: {
+                f_name: "Please enter First name",
+                l_name: "Please enter last name",
+                national_id: "Please enter National ID",
+                email: "Please enter Email",
+                phone: "Please enter phone",
+            },
+            submitHandler: function (form) {
+                loaderGif.show();
+                var form = $("#editform");
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: "submitEditEmployeeReportForm",
+                    type: "POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    success: function (res) {
+                        if (res.status == "true") {
+                            $("#editModal").modal("hide");
+                            form[0].reset();
+                            ajaxHandler.alertMessage(
+                                res.msg,
+                                "success",
                                 "dashboard_alert_message",
                                 false
                             );
@@ -1076,4 +1245,5 @@ const ajaxEmployeeHandler = {
         });
     },
 };
-// ##employees
+
+//## employee report

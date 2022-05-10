@@ -26,7 +26,8 @@ class ContractsManagementController extends Controller
     public function getListing()
     {
         $contract = $this->model;
-
+        //join('') - first argument passed to the join method is the name of the table you need to join to
+        //contracts is our primary table
         $data = [
             'listing' => $contract::select(DB::raw("contracts.*,contracts.id AS con_id"), "properties.*", "leaseholders.*")
                 ->join('properties', 'properties.id', '=', 'contracts.property_id')
