@@ -22,7 +22,8 @@
 
                 </div>
                 <div class="list-group list-group-flush my-3">
-                    {{-- TDOD LATER FOR PAGES --}}
+                    {{-- ADMIN page --}}
+                    @if(\Illuminate\Support\Facades\Auth::user()->is_admin == 1)
                     <a href="{{route('property-managment')}}"
                         class="list-group-item  {{ $slug == 'property-managment'?'active':'' }}">Property Management</a>
 
@@ -36,13 +37,14 @@
                         class="list-group-item {{ @$slug == 'contracts'?'active':''}} ">Contracts</a>
 
                     <a href="/" class="list-group-item">Report Management</a>
-
+                    {{-- Manager Page --}}
+                    @else
                     <a href="{{route('employee-report')}}"
                         class="list-group-item {{ @$slug == 'employee-report'?'active':''}}">Add Employee Report</a>
 
                     <a href="{{route('employee-management')}}"
                         class="list-group-item {{ $slug == 'employee'?'active':''}}">Employee Management</a>
-
+                    @endif
                 </div>
             </div>
             {{-- ##sidebar Options on the left --}}
@@ -70,11 +72,21 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user me-2"></i>Admin
+                                    <i class="fas fa-user me-2"></i>{{ \Illuminate\Support\Facades\Auth::user()->name }}
                                 </a>
-                                {{-- TODO logout page --}}
+                                {{-- logout --}}
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
