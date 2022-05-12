@@ -75,7 +75,7 @@ Employee Report Management
                                                         <p><b>Employee Salary</b></p>
                                                     </td>
                                                     <td>
-                                                        <p>{{$listItem->salary}}</p>
+                                                        <p>{{$listItem->salary}}$</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -92,14 +92,6 @@ Employee Report Management
                                                     </td>
                                                     <td>
                                                         <p>{{$listItem->token_id}}</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="td-width">
-                                                        <p><b>Employee Salary</b></p>
-                                                    </td>
-                                                    <td>
-                                                        <p>{{$listItem->salary}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>

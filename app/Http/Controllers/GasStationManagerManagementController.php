@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GasStationManager;
+use App\User;
 use Facade\FlareClient\Http\Response;
 
 class GasStationManagerManagementController extends Controller

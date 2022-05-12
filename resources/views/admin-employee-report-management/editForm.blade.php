@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit EmployeeReport</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -16,44 +16,57 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="national_id" class="form-control" placeholder="Enter National Id"
-                                value="{{@$formData->national_id}}" required />
+                            <select name="employee_id" class="form-control">
+                                <option value="" disabled>Select employee</option>
+                                @foreach($employees as $employee)
+                                <option value="{{@$employee->id}}" {{@$employee->id == @$formData->employee_id ?
+                                    'selected' : '' }}>{{$employee->fname.' '.$employee->lname}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="f_name" class="form-control" placeholder="Enter First Name"
-                                value="{{@$formData->fname}}" required />
+                            <input type="text" name="pump_capacity" value="{{@$formData->pump_capacity}}"
+                                class="form-control" placeholder="Enter Pump Capacity" required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="l_name" class="form-control" placeholder="Enter Last Name"
-                                value="{{@$formData->lname}}" required />
+                            <input type="text" name="fuel_type" value="{{@$formData->fuel_type}}" class="form-control"
+                                placeholder="Enter Pump Fuel Type" required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="token_id" class="form-control" placeholder="Enter Token ID"
-                                value="{{@$formData->token_id}}" required />
+                            <input type="text" name="sales" value="{{@$formData->sales}}" class="form-control"
+                                placeholder="Enter Sales Amount" required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="phone" class="form-control" placeholder="Enter phone"
-                                value="{{@$formData->phone_no}}" required />
+                            <input type="text" name="total" value="{{@$formData->total}}" class="form-control"
+                                placeholder="Enter total Amount" required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="salary" class="form-control" value="{{@$formData->salary}}"
-                                placeholder="Enter salary" required />
+                            <label for="">Report Date</label>
+                            <input type="date" name="report_date" value="{{@$formData->report_date}}"
+                                class="form-control" placeholder="Enter report date" required />
                         </div>
                     </div>
+
                     <div class="modal-footer">
-                        <button onclick="ajaxEmployeeHandler.submitEditForm()"
+                        <button onclick="ajaxEmployeeReportHandler.submitEditForm()"
                             class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Update</button>
                         <button type="button" class="btn btn-danger form-control border-0" data-bs-dismiss="modal">Close

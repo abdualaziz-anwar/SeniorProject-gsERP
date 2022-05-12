@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add New Employee</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add New EmployeeReport</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -16,43 +16,55 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="national_id" class="form-control" placeholder="Enter National Id"
+                            <select name="employee_id" class="form-control">
+                                <option value="" disabled selected> Select Employee</option>
+                                @foreach($employees as $employee)
+                                <option value="{{$employee->id}}">{{$employee->fname.' '.$employee->lname}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <input type="text" name="pump_capacity" class="form-control"
+                                placeholder="Enter Pump Capacity" required />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <input type="text" name="fuel_type" class="form-control" placeholder="Enter Pump Fuel Type"
                                 required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="f_name" class="form-control" placeholder="Enter First Name"
+                            <input type="text" name="sales" class="form-control" placeholder="Enter Sales Amount"
                                 required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="l_name" class="form-control" placeholder="Enter Last Name"
+                            <input type="text" name="total" class="form-control" placeholder="Enter total Amount"
                                 required />
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="token_id" class="form-control" placeholder="Enter Token ID"
+                            <label for="">Report Date</label>
+                            <input type="date" name="report_date" class="form-control" placeholder="Enter report date"
                                 required />
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <input type="number" name="phone" class="form-control" placeholder="+966" required />
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <input type="text" name="salary" class="form-control" placeholder="Enter salary" required />
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button onclick="ajaxEmployeeHandler.submitaddForm()"
+                        <button onclick="ajaxEmployeeReportHandler.submitaddFrom()"
                             class="btn btn-success form-control border-0"
                             style="background-color: #1C4E80; color: white;"> Submit</button>
                         <button type="button" class="btn btn-danger form-control border-0" data-bs-dismiss="modal">Close
