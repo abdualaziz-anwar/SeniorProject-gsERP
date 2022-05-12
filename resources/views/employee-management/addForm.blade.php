@@ -1,24 +1,27 @@
-<!-- add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            {{-- modal header --}}
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add New Employee</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            {{-- ##modal header --}}
             <div class="modal-body">
                 <form action="#" id="addForm">
 
                     <div class="row">
                         <div class="col text-center ">
+
                             <div id="form_alert_msg">
 
                             </div>
+
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="national_id" class="form-control" placeholder="Enter National Id"
+                            <input type="number" name="national_id" class="form-control" placeholder="Enter National Id"
                                 required />
                         </div>
                     </div>
@@ -42,12 +45,13 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="number" name="phone" class="form-control" placeholder="+966" required />
+                            <input type="number" name="phone" class="form-control" placeholder="Enter Phone" required />
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="salary" class="form-control" placeholder="Enter salary" required />
+                            <input type="number" name="salary" class="form-control" placeholder="Enter salary"
+                                required />
                         </div>
                     </div>
 

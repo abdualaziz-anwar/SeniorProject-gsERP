@@ -36,9 +36,7 @@
                     <a href="{{route('contracts')}}"
                         class="list-group-item {{ @$slug == 'contracts'?'active':''}} ">Contracts</a>
 
-                    <a href="{{route('admin-employee-report')}}"
-                        class="list-group-item {{ @$slug == 'admin-employee-report'?'active':'' }}">Report
-                        Management</a>
+                    <a href="/" class="list-group-item">Report Management</a>
                     {{-- Manager Page --}}
                     @else
                     <a href="{{route('employee-report')}}"

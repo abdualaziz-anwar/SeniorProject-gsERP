@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //employee
     Route::get('/employee-management', [\App\Http\Controllers\EmployeeManagmenetController::class, 'getListing'])->name('employee-management');
-    Route::post('/submitAddEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'submitAddForm'])->name("submitAddEmployeeForm");
+    Route::post('/submitAddEmployeeForm', [\App\Http\Controllers\EmployeeManagementController::class, 'submitAddForm'])->name('submitAddEmployeeForm');
     Route::post('/deleteEmployee', [\App\Http\Controllers\EmployeeManagmenetController::class, "deleteItem"])->name('deleteEmployee');
     Route::post('/submitEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'submitEditForm'])->name('submitEditEmployeeForm');
     Route::post('/populateEditEmployeeForm', [\App\Http\Controllers\EmployeeManagmenetController::class, 'populateEditForm'])->name('populateEditEmployeeForm');
@@ -68,17 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/populateEditEmployeeReportForm', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'populateEditForm'])->name('populateEditEmployeeReportForm');
     Route::post('/submitEditEmployeeReportForm', [\App\Http\Controllers\EmployeeReportManagmentController::class, 'submitEditForm'])->name('submitEditEmployeeReportForm');
     //##employee Report
-
-    //admin employye report
-    Route::get('/admin-employee-report', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'getListing'])->name('admin-employee-report');
-    Route::get('/admin-employee-report/{emp_id}', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'getSingleEmployeeReport'])->name('singleEmployeeReport');
-    //Route::post('/submitAddEmployeeReportForm', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'submitAddForm'])->name('submitAddEmployeeReportForm');
-    //Route::post('/deleteEmployeeReport', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'deleteItem'])->name('deleteEmployeeReport');
-    //Route::post('/populateEditEmployeeReportForm', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'populateEditForm'])->name('populateEditEmployeeReportForm');
-    //Route::post('/submitEditEmployeeReportForm', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'submitEditForm'])->name('submitEditEmployeeReportForm');
-
-    Route::get('/downloadReport', [\App\Http\Controllers\AdminEmployeeReportManagementController::class, 'downloadReport'])->name('downloadReport');
-    //##admin employye report
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

@@ -1,4 +1,3 @@
-<!-- edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,20 +17,20 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="national_id" class="form-control" placeholder="Enter National Id"
+                            <input type="number" name="national_id" class="form-control" placeholder="Enter National Id"
                                 value="{{@$formData->national_id}}" required />
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
                             <input type="text" name="f_name" class="form-control" placeholder="Enter First Name"
-                                value="{{@$formData->fname}}" required />
+                                value="{{@$formData->f_name}}" required />
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
                             <input type="text" name="l_name" class="form-control" placeholder="Enter Last Name"
-                                value="{{@$formData->lname}}" required />
+                                value="{{@$formData->l_name}}" required />
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -42,13 +41,13 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="phone" class="form-control" placeholder="Enter phone"
+                            <input type="number" name="phone" class="form-control" placeholder="Enter phone"
                                 value="{{@$formData->phone_no}}" required />
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" name="salary" class="form-control" value="{{@$formData->salary}}"
+                            <input type="number" name="salary" class="form-control" value="{{@$formData->salary}}"
                                 placeholder="Enter salary" required />
                         </div>
                     </div>

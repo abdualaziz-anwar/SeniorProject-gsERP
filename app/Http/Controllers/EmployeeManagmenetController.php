@@ -32,8 +32,8 @@ class EmployeeManagmenetController extends Controller
     {
         $employee = $this->model;
 
-        $employee->fname = $request['f_name'];
-        $employee->lname = $request['l_name'];
+        $employee->f_name = $request['f_name'];
+        $employee->l_name = $request['l_name'];
         $employee->phone_no = $request['phone'];
         $employee->token_id = $request['token_id'];
         $employee->national_id = $request['national_id'];
@@ -57,8 +57,8 @@ class EmployeeManagmenetController extends Controller
         $employee = $this->model;
         $employee = $employee::find($request['edit_id']);
 
-        $employee->fname = $request['f_name'];
-        $employee->lname = $request['l_name'];
+        $employee->f_name = $request['f_name'];
+        $employee->l_name = $request['l_name'];
         $employee->phone_no = $request['phone'];
         $employee->token_id = $request['token_id'];
         $employee->national_id = $request['national_id'];

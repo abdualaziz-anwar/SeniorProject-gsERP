@@ -5,7 +5,7 @@ Employee Management
 @section('pagecontent')
 <div class="container-fluid ">
     <div class="inner-content">
-        <!-- Button trigger modal -->
+        {{-- button trigger --}}
         <button type="button" class="btn btn-success text-uppercase mt-4 mx-4  border-0"
             style="background-color: #1C4E80;" id="addNewButton" data-bs-toggle="modal" data-bs-target="#addModal">
             Add New Employee
@@ -33,15 +33,17 @@ Employee Management
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- start loop --}}
                     @foreach($listing as $listItem)
                     <tr class="text-center">
                         <td>{{$listItem->national_id}}</td>
-                        <td>{{$listItem->fname}}</td>
-                        <td>{{$listItem->lname}}</td>
+                        <td>{{$listItem->f_name}}</td>
+                        <td>{{$listItem->l_name}}</td>
                         <td>{{$listItem->salary}}</td>
                         <td>{{$listItem->phone_no}}</td>
                         <td>{{$listItem->token_id}}</td>
                         <td>
+                            {{-- view button --}}
                             <button type="button" class="btn text-success" data-bs-toggle="modal"
                                 data-bs-target="#viewPropertyData{{$listItem->id}}">
                                 View
@@ -52,10 +54,11 @@ Employee Management
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title " id="exampleModalLabel">Employee:
-                                                {{$listItem->fname.' '.$listItem->lname}}</h5>
+                                                {{$listItem->f_name.' '.$listItem->l_name}}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
+                                        {{-- start modal body --}}
                                         <div class="modal-body">
                                             <table class="table table-bordered p-3">
                                                 <tr>
@@ -71,7 +74,7 @@ Employee Management
                                                         <p><b>Name</b></p>
                                                     </td>
                                                     <td>
-                                                        <p>{{$listItem->fname.' '.$listItem->lname}}</p>
+                                                        <p>{{$listItem->f_name.' '.$listItem->l_name}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -101,6 +104,7 @@ Employee Management
 
                                             </table>
                                         </div>
+                                        {{-- end modal body --}}
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger form-control"
                                                 data-bs-dismiss="modal">Close
@@ -111,7 +115,8 @@ Employee Management
                             </div>
                         </td>
                         <td><a href="#" class="btn text-primary"
-                                onclick="ajaxEmployeeHandler.populateEditForm({{$listItem->id}})">Edit</a></td>
+                                onclick="ajaxEmployeeHandler.populateEditForm({{$listItem->id}})">Edit</a>
+                        </td>
                         <td><a href="#" class="btn text-danger"
                                 onclick="ajaxEmployeeHandler.deleteItem({{$listItem->id}})">Delete</a></td>
                     </tr>
